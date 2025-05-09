@@ -4,6 +4,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/preact'
 import { useState } from 'preact/hooks'
 import DateInput from 'components/DateInput'
 import Patient, { CommonContent } from 'types/Patient'
+import { v4 } from 'uuid'
 
 interface ExtractedInputsProps {
   currentPatient: Patient
@@ -29,7 +30,9 @@ function ProcessedInput({
         }
       >
         {options.map((option) => (
-          <option value={option}>{option}</option>
+          <option value={option} key={option + v4()}>
+            {option}
+          </option>
         ))}
       </select>
     )
